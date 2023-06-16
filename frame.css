@@ -1,0 +1,47 @@
+.main {
+  width: 750px;
+  height: 400px;
+}
+.container {
+  width: 60%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.container > .top {
+  height: 15%;
+}
+.container > .middle {
+  height: 75%;
+}
+.container > .bottom {
+  height: 10%;
+}
+
+.head > .left {
+  width: 20%;
+}
+.head > .right {
+  width: 80%;
+}
+.middle > .left {
+  width: 60%;
+}
+.middle > .right {
+  width: 40%;
+}
+.bottom > .left {
+  width: 90%;
+}
+.bottom > .right {
+  width: 10%;
+}
+
+.bottom > .left > input {
+  width: 100%;
+  height: 100%;
+}
+
+.wrap-input-username {
+  height: 100%;
+}

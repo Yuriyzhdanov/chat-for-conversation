@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>introvert_chatv1</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./frame.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="container">
+        <input type="checkbox" id="show_slider" />
+        <div class="top">
+          <div class="head row">
+            <div class="left">
+              <label for="show_slider">
+                <img
+                  src="./icons/align-justify-svgrepo-com.svg"
+                  width="22px"
+                  alt="burger"
+                />
+              </label>
+            </div>
+            <div class="right">
+              <div class="wrap-head">
+                <h2>Introvert chat</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="middle row">
+          <div class="left">
+            <div class="chat-container" id="chat-container">
+              <div class="chat-flow" id="chat-flow">
+                
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="user-list" id="nickname-list"></div>
+          </div>
+        </div>
+        <div class="bottom row">
+          <div class="left">
+            <input type="text" name="chat-input" id="chat-input" />
+          </div>
+          <div class="right">
+            <button class="send-btn" id="send-btn">
+              <img src="./icons/back-svgrepo-com.svg" width="22px" alt="back" />
+            </button>
+          </div>
+        </div>
+        <div class="slider">
+          <div class="wrap-input-username">
+            <label for="username">Your nickname:</label>
+            <input type="text" name="usrername" id="username" required />
+            <div class="slider-button">
+              <label for="show_slider" id="login"> Go </label>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

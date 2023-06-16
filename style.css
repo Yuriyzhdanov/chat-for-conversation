@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  color: #234;
+  font-family: "Open Sans", sans-serif;
+}
+/* div {
+  padding: 2px;
+  border: 1px solid;
+} */
+
+.row {
+  font-size: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.row > div {
+  display: inline-block;
+  font-size: 14px;
+  height: 100%;
+  vertical-align: top;
+  overflow: hidden;
+  white-space: normal;
+}
+
+.container {
+  position: relative;
+  background: linear-gradient(65deg, #76f4ef, #6df046);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.container > input {
+  display: none;
+}
+.bottom {
+  border-top: 1px solid whitesmoke;
+}
+.slider {
+  position: absolute;
+  height: calc(100% - 15%);
+  top: 15%;
+  left: 0;
+  width: 100%;
+  transition: left 0.3s ease-in-out;
+  background-color: #fff6;
+}
+
+.head > .left {
+  text-align: center;
+  line-height: 85px;
+}
+.head > .left > label {
+  cursor: pointer;
+}
+.wrap-head {
+  text-align: center;
+  line-height: 40px;
+}
+
+.wrap-input-username {
+  text-align: center;
+  line-height: 55px;
+}
+
+[type="text"] + div{
+  pointer-events: none;
+}
+[type="text"]:valid + div {
+  pointer-events: all;
+}
+input[type="checkbox"]:checked ~ .slider {
+  left: -100%;
+}
+
+.slider-button {
+  border: 1px solid;
+  background-color: rgb(13, 237, 237);
+  border: none;
+  cursor: pointer;
+  width: 60px;
+  margin: 0 auto;
+}
+.wrap-input-username > div > label {
+  cursor: pointer;
+}
+
+.bottom > .left > input {
+  border: none;
+  background-color: transparent;
+  padding: 0 10px;
+}
+.user-list {
+  padding: 5px;
+}
+.user-list > .wrap-span {
+  background: lightyellow;
+  padding: 5px;
+  pointer-events: none;
+}
+.user-list > div > b {
+  pointer-events: none;
+}
+.user-list > div {
+  cursor: pointer;
+}
+.user-list > div:hover {
+  background-color: #ccc;
+}
+.user-list > div:active {
+  background-color: #47c95f;
+}
+
+.chat-container {
+  height: 100%;
+  position: relative;
+  overflow: auto;
+  background-color: #fff7;
+  padding: 5px;
+}
+
+.chat-flow {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+/* .chat-flow > div > span:first-child{
+  font-style: italic;
+} */
+.message-line {
+  padding: 5px;
+}
+.message-line > span {
+  background-color: rgba(196, 37, 153, 0.148);
+  border-radius: 4px;
+}
+
+.bottom > .left > input:hover {
+  background-color: #fff7;
+}
+
+.send-btn {
+  background-color: transparent;
+}
