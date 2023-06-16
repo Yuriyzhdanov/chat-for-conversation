@@ -1,11 +1,7 @@
 let currentNickname;
+
 const userList = [];
-const stopWords = [
-  'баклажан',
-  'огурец',
-  'помидор',
-  'лук',
-]
+const stopWords = ["баклажан", "огурец", "помидор", "лук"];
 
 function generateSysMsgLine() {
   const div = document.createElement("div");
@@ -24,7 +20,8 @@ function generateSysMsgLine() {
 function generateUserMsgLine(text) {
   const div = document.createElement("div");
   const span = document.createElement("span");
-  const message = `<b>[${currentNickname}]:</b> ${text}`;
+  const filteredTag = censoredTag(text);
+  const message = `<b>[${currentNickname}]:</b> ${filteredTag}`;
   div.appendChild(span);
   div.classList.add("message-line");
   span.innerHTML = message;
@@ -45,21 +42,26 @@ function readUserName() {
   return username;
 }
 
+function readInputMessage() {
+  const inputElem = document.querySelector("#chat-input");
+  const msg = inputElem.value;
+  inputElem.value = "";
+  return msg;
+}
+
 function isUserExist(username) {
-  return userList.includes(username);
+  const result = userList.includes(username);
+  if (!result) {
+    userList.push(username);
+  }
+  return result;
 }
 
 function addUser() {
   currentNickname = readUserName();
   const censoredNickname = censoredArray(currentNickname);
-  const isExist = isUserExist(censoredNickname);
-  if (!isExist) {
-    userList.push(censoredNickname);
-    console.log("censoredNickname",censoredNickname);
-    console.log('currentNickname',currentNickname);
-    
-    // currentNickname = censoredNickname;  ????????????
-  }
+  const isExist = isUserExist(currentNickname);
+  currentNickname = censoredNickname;
   return isExist;
 }
 
@@ -80,14 +82,15 @@ function onLoginClickHandler() {
     renderChatFlow("system", "");
     renderNicknameList();
   }
-  censoredArray(currentNickname); 
+  censoredArray(currentNickname);
 }
-
 
 function onSendClickHandler() {
   const message = readMessage();
-  const censored = censoredArray(message)
-  renderChatFlow("user", censored);
+  if (message.trim() !== "") {
+    const censored = censoredArray(message);
+    renderChatFlow("user", censored);
+  }
 }
 
 function onPingHandler(e) {
@@ -100,51 +103,49 @@ function onPingHandler(e) {
 }
 
 function censoredArray(sourceText) {
-  let result = sourceText
-  for(let i = 0; i < stopWords.length; i++) {
-    const r = new RegExp(stopWords[i], 'gi')
-    result = result.replace(r, '***')
+  let result = sourceText;
+  for (let i = 0; i < stopWords.length; i++) {
+    const r = new RegExp(stopWords[i], "gi");
+    result = result.replace(r, "***");
   }
   if (sourceText !== result) {
     // reportModerator(currentUserName, sourceText)
   }
+  return result;
+}
 
-  return result
+function censoredTag(tag) {
+  const tagRegex = /<[^>]+>/g;
+  return tag.replace(tagRegex, "");
 }
 
 function concatPing(pingName, message) {
   return `@${pingName}: ${message}`;
 }
 
-function readInputMessage() {
-  const inputElem = document.querySelector("#chat-input");
-  const msg = inputElem.value
-  inputElem.value = ''
-  return msg 
-}
-
 function writeInputMessage(text) {
   const inputElem = document.querySelector("#chat-input");
-  inputElem.value = text
+  inputElem.value = text;
 }
 
 function generateUserNickname(nick) {
-  const div = document.createElement('div')
-  const b = document.createElement('b')
-  div.onclick = onPingHandler
-  div.appendChild(b)
-  b.innerHTML = nick
-  return div
+  const div = document.createElement("div");
+  const b = document.createElement("b");
+  div.onclick = onPingHandler;
+  div.appendChild(b);
+  b.innerHTML = nick;
+  return div;
 }
 
 function renderNicknameList() {
-  const userElem = generateUserNickname(currentNickname)
-  const nicknameList = document.querySelector('#nickname-list')
-  nicknameList.appendChild(userElem)
+  const censoredNickname = censoredArray(currentNickname);
+  const userElem = generateUserNickname(censoredNickname);
+  const nicknameList = document.querySelector("#nickname-list");
+  nicknameList.appendChild(userElem);
 }
 
 function onMessageEnter(e) {
-  if (e.key === 'Enter') {
+  if (e.key === "Enter") {
     onSendClickHandler();
   }
 }
@@ -156,8 +157,3 @@ const sendButton = document.querySelector("#send-btn");
 sendButton.onclick = onSendClickHandler;
 
 document.body.onkeydown = onMessageEnter;
-
-
-
-
-
