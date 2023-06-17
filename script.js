@@ -102,11 +102,24 @@ function onPingHandler(e) {
   inputElem.focus();
 }
 
+function fillStars(text) {
+  let len = text.length;
+  let star = "*";
+  let result = "";
+
+  for (let i = 0; i < len; i++) {
+    result = result + star;
+  }
+
+  return result;
+}
+
 function censoredArray(sourceText) {
   let result = sourceText;
   for (let i = 0; i < stopWords.length; i++) {
     const r = new RegExp(stopWords[i], "gi");
-    result = result.replace(r, "***");
+    const stars = fillStars(stopWords[i])
+    result = result.replace(r,stars);
   }
   if (sourceText !== result) {
     // reportModerator(currentUserName, sourceText)
@@ -149,6 +162,8 @@ function onMessageEnter(e) {
     onSendClickHandler();
   }
 }
+
+
 
 const loginButton = document.querySelector("#login");
 loginButton.onclick = onLoginClickHandler;
