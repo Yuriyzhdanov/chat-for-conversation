@@ -9,7 +9,6 @@ body {
   padding: 2px;
   border: 1px solid;
 } */
-
 .row {
   font-size: 0;
   overflow: hidden;
@@ -63,7 +62,7 @@ body {
   line-height: 55px;
 }
 
-[type="text"] + div{
+[type="text"] + div {
   pointer-events: none;
 }
 [type="text"]:valid + div {
@@ -88,7 +87,7 @@ input[type="checkbox"]:checked ~ .slider {
 .bottom > .left > input {
   border: none;
   background-color: transparent;
-  padding: 0 10px;
+  padding: 0 5px;
 }
 .user-list {
   padding: 5px;
@@ -102,10 +101,12 @@ input[type="checkbox"]:checked ~ .slider {
   pointer-events: none;
 }
 .user-list > div {
+  padding: 0 5px;
   cursor: pointer;
 }
 .user-list > div:hover {
-  background-color: #ccc;
+  background-color: rgba(255, 255, 255, 0.535);
+  transition: 0.1s ease-in-out;
 }
 .user-list > div:active {
   background-color: #47c95f;
@@ -124,21 +125,36 @@ input[type="checkbox"]:checked ~ .slider {
   bottom: 0;
   width: 100%;
 }
-/* .chat-flow > div > span:first-child{
-  font-style: italic;
-} */
-.message-line {
-  padding: 5px;
-}
+
 .message-line > span {
   background-color: rgba(196, 37, 153, 0.148);
   border-radius: 4px;
+  padding: 0 5px;
 }
 
 .bottom > .left > input:hover {
   background-color: #fff7;
+  transition: 0.1s ease-in-out;
 }
-
+.bottom > .right {
+  text-align: center;
+  position: relative;
+}
 .send-btn {
   background-color: transparent;
+  border: none;
+  position: absolute;
+  bottom:0;
+  top:0;
+  left:0;
+  right:0;
+}
+
+.send-btn:hover {
+  background-color: #fff7;
+  transition: 0.1s ease-in-out;
+}
+.send-btn:active {
+  background-color: rgba(255, 255, 255, 0.702);
+  transition: 0.1s ease-in-out;
 }
