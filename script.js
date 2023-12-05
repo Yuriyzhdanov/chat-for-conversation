@@ -28,12 +28,6 @@ function generateUserMsgLine(text) {
   return div;
 }
 
-function readMessage() {
-  const inputElem = document.querySelector("#chat-input");
-  const message = inputElem.value;
-  inputElem.value = "";
-  return message;
-}
 
 function readUserName() {
   const inputElem = document.querySelector("#username");
@@ -162,7 +156,6 @@ function onMessageEnter(e) {
     onSendClickHandler();
   }
 }
-
 
 
 const loginButton = document.querySelector("#login");
